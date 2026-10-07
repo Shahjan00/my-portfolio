@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Shahjan Ali — AI & Backend Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #e4e4e4;
+      --ink: #0a0a0a;
+      --card: #f1f1f1;
+      --mute: #6b6b6b;
+      --inv: #0a0a0a;
+      --invt: #f1f1f1;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px)
+    }
+
+    @media (prefers-color-scheme:dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #101010;
+        --ink: #ececec;
+        --card: #1b1b1b;
+        --mute: #9a9a9a;
+        --inv: #ececec;
+        --invt: #101010
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #101010;
+      --ink: #ececec;
+      --card: #1b1b1b;
+      --mute: #9a9a9a;
+      --inv: #ececec;
+      --invt: #101010
+    }
+
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+      scroll-behavior: smooth
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 14px/1.6 'Space Mono', ui-monospace, monospace;
+      overflow-x: hidden
+    }
+
+    @media (hover:hover) {
+
+      body,
+      a,
+      button {
+        cursor: none
+      }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 24px
+    }
+
+    .big {
+      font-family: Anton, Impact, 'Arial Narrow', sans-serif;
+      text-transform: uppercase;
+      line-height: .84;
+      margin: 0;
+      font-weight: 400
+    }
+
+    .pill {
+      display: inline-block;
+      border: 1px solid var(--ink);
+      border-radius: 99px;
+      padding: 5px 14px;
+      font-size: 12px;
+      transition: .25s;
+      background: transparent;
+      color: var(--ink);
+      font-family: inherit
+    }
+
+    .pill:hover {
+      background: var(--inv);
+      color: var(--invt)
+    }
+
+    .pill.solid {
+      background: var(--inv);
+      color: var(--invt)
+    }
+
+    nav {
+      position: fixed;
+      top: env(safe-area-inset-top, 0px);
+      left: 0;
+      right: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      mix-blend-mode: normal
+    }
+
+    nav .links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end
+    }
+
+    .logo {
+      font-family: Anton, Impact, sans-serif;
+      font-size: 22px;
+      letter-spacing: 1px
+    }
+
+    #bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--ink);
+      width: 0;
+      z-index: 99
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 90px
+    }
+
+    .hero .big {
+      font-size: clamp(88px, 26vw, 380px);
+      white-space: nowrap
+    }
+
+    .hero .l2 {
+      -webkit-text-stroke: 2px var(--ink);
+      color: transparent
+    }
+
+    .hero small {
+      display: block;
+      max-width: 420px;
+      margin: 0 0 24px
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 28px
+    }
+
+    section {
+      padding: 14vh 0;
+      position: relative
+    }
+
+    h2.big {
+      font-size: clamp(56px, 12vw, 170px);
+      margin-bottom: 40px
+    }
+
+    .lead {
+      font-size: clamp(16px, 2.2vw, 24px);
+      max-width: 900px;
+      line-height: 1.5
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 28px;
+      padding: 28px;
+      transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+      transition: transform .15s, background .3s, color .3s;
+      position: relative;
+      overflow: hidden
+    }
+
+    .card:hover {
+      background: var(--inv);
+      color: var(--invt)
+    }
+
+    .card:hover .pill {
+      border-color: var(--invt);
+      color: var(--invt)
+    }
+
+    .card h3 {
+      font-family: Anton, Impact, sans-serif;
+      font-weight: 400;
+      font-size: 34px;
+      text-transform: uppercase;
+      margin: 0 0 6px;
+      line-height: 1
+    }
+
+    .card ul {
+      padding-left: 18px;
+      margin: 14px 0
+    }
+
+    .card .tech {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 14px 0
+    }
+
+    .card .tech span {
+      border: 1px solid currentColor;
+      border-radius: 99px;
+      padding: 2px 10px;
+      font-size: 11px
+    }
+
+    .meta {
+      color: var(--mute);
+      font-size: 12px
+    }
+
+    .card:hover .meta {
+      color: inherit;
+      opacity: .7
+    }
+
+    .marq {
+      overflow: hidden;
+      border-block: 1px solid var(--ink);
+      padding: 14px 0;
+      margin: 0 0 60px
+    }
+
+    .marq div {
+      display: flex;
+      gap: 40px;
+      width: max-content;
+      animation: mq 28s linear infinite;
+      font-family: Anton, Impact, sans-serif;
+      font-size: 40px;
+      text-transform: uppercase;
+      white-space: nowrap
+    }
+
+    @keyframes mq {
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    .skill {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-top: 1px solid var(--ink);
+      flex-wrap: wrap
+    }
+
+    .skill b {
+      min-width: 170px;
+      font-family: Anton, Impact, sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      text-transform: uppercase
+    }
+
+    .skill span {
+      flex: 1;
+      min-width: 220px
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px
+    }
+
+    .stats .big {
+      font-size: clamp(60px, 9vw, 120px)
+    }
+
+    .rv {
+      opacity: 0;
+      transform: translateY(60px) scale(.98);
+      transition: opacity .9s cubic-bezier(.2, .7, .2, 1), transform .9s cubic-bezier(.2, .7, .2, 1)
+    }
+
+    .rv.in {
+      opacity: 1;
+      transform: none
+    }
+
+    .cta {
+      display: block;
+      font-size: clamp(28px, 6vw, 80px);
+      font-family: Anton, Impact, sans-serif;
+      text-transform: uppercase;
+      line-height: 1.1;
+      word-break: break-all;
+      transition: letter-spacing .4s
+    }
+
+    .cta:hover {
+      letter-spacing: 4px
+    }
+
+    #cur {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #fff;
+      mix-blend-mode: difference;
+      pointer-events: none;
+      z-index: 200;
+      transition: width .2s, height .2s;
+      display: none
+    }
+
+    #cur.big2 {
+      width: 64px;
+      height: 64px
+    }
+
+    @media (hover:hover) {
+      #cur {
+        display: block
+      }
+    }
+
+    #bot {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 110px;
+      z-index: 120;
+      pointer-events: none;
+      will-change: transform
+    }
+
+    #bot .bub {
+      position: absolute;
+      bottom: 128px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--inv);
+      color: var(--invt);
+      border-radius: 99px;
+      padding: 6px 14px;
+      font-size: 12px;
+      white-space: nowrap;
+      transition: opacity .3s
+    }
+
+    #bot .eyes {
+      transition: transform .08s;
+      transform-origin: center
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      .rv {
+        transition: none;
+        opacity: 1;
+        transform: none
+      }
+
+      .marq div {
+        animation: none
+      }
+
+      html {
+        scroll-behavior: auto
+      }
+    }
+
+    footer {
+      padding: 40px 0 120px;
+      text-align: center
+    }
+  </style>
+</head>
+
+<body>
+  <div id="bar"></div>
+  <div id="cur"></div>
+  <div id="root"></div>
+  <div id="bot">
+    <div class="bub" id="bub">hey, follow me</div>
+    <svg viewBox="0 0 110 130" width="110" height="130" id="botsvg" aria-hidden="true">
+      <defs>
+        <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#7d8583" />
+          <stop offset="1" stop-color="#3b4140" />
+        </linearGradient>
+        <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#262b2b" />
+          <stop offset="1" stop-color="#101313" />
+        </linearGradient>
+      </defs>
+      <ellipse id="sh" cx="55" cy="124" rx="30" ry="5" fill="#000" opacity=".25" />
+      <rect x="30" y="86" width="50" height="30" rx="14" fill="#4a5150" />
+      <circle cx="26" cy="96" r="7" fill="#5a6261" />
+      <circle cx="84" cy="96" r="7" fill="#5a6261" />
+      <rect x="4" y="6" width="102" height="86" rx="34" fill="url(#bg1)" />
+      <rect x="-2" y="34" width="12" height="26" rx="6" fill="#59615f" />
+      <rect x="14" y="16" width="82" height="62" rx="26" fill="url(#bg2)" />
+      <path d="M24 26 Q40 18 60 20" stroke="#fff" stroke-opacity=".18" stroke-width="3" fill="none"
+        stroke-linecap="round" />
+      <g class="eyes" id="eyes">
+        <rect x="34" y="38" width="17" height="19" rx="5" fill="#fff" />
+        <rect x="59" y="38" width="17" height="19" rx="5" fill="#fff" />
+      </g>
+    </svg>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script>
+    const h = React.createElement;
+    const BOT = { hero: "hey, I'm Shahjan's bot", about: "he builds RAG systems", work: "live on AWS. try it", stack: "python, django, faiss", edu: "CGPA 7.65", contact: "say hi to him" };
+
+    const projects = [
+      {
+        n: "RAGBot", s: "B2B SaaS RAG Platform", d: "Jan - Apr 2026", t: ["Django", "DRF", "LangChain", "FAISS", "OpenAI", "AWS"],
+        p: ["Architected a multi-tenant B2B SaaS platform for PDF-based chat with an embeddable JS widget using Django, DRF, PostgreSQL, Celery, and Redis.",
+          "Engineered a LangChain RAG pipeline using FAISS, cosine similarity, and SentenceTransformers embeddings; served contextual answers via GPT-4o-mini with source attribution.",
+          "Built per-tenant document ingestion, chunking, embedding, and async processing pipeline; containerized with Docker.",
+          "Deployed on AWS EC2 with a custom domain and HTTPS; publicly accessible live demo."], l: "Live Demo"
+      },
+      {
+        n: "CineMatch", s: "Movie Recommendation System", d: "Sep 2026", t: ["Python", "NLP", "TF-IDF", "Scikit-learn", "FastAPI"],
+        p: ["Built a content-based movie recommendation engine over 45,000+ movies, combining plot overview, genre, and tagline into a unified text corpus for similarity-based matching.",
+          "Implemented a 4-stage NLP pipeline (lowercasing, regex cleaning, stop-word removal, lemmatization) and TF-IDF vectorization (unigrams + bigrams, 50,000 features) generating a sparse matrix with 1.7M+ non-zero entries; used cosine similarity for scalable item-to-item recommendations and serialized trained artifacts for reuse."], l: "GitHub"
+      },
+      {
+        n: "TableFlow", s: "QR-Based Restaurant Ordering System", d: "Aug - Sep 2025", t: ["Django", "DRF", "PostgreSQL", "JWT"],
+        p: ["Built a QR-based restaurant ordering backend with menu browsing and order lifecycle management: pending → preparing → served.",
+          "Implemented JWT authentication, role-based access control, and Docker-based deployment for admin and customer roles."], l: "GitHub"
+      }
+    ];
+    const skills = [
+      ["Languages", "Python, JavaScript (Node.js), TypeScript, SQL, C"],
+      ["Backend & APIs", "Django, DRF, Flask, FastAPI, Express.js, REST APIs, JWT Auth"],
+      ["AI / ML", "RAG, LangChain, Embeddings, Semantic Search, NLP, Scikit-learn, Classification, Regression"],
+      ["Vector Search", "FAISS, ChromaDB, Cosine Similarity"],
+      ["Databases", "PostgreSQL, MySQL, MongoDB"],
+      ["Tools", "Git, AWS, Docker, Postman, Jupyter Notebook, Linux, HuggingFace, Celery, Redis"],
+      ["CS Fundamentals", "Data Structures & Algorithms, Operating Systems, DBMS, OOP, Computer Networks, System Design"]
+    ];
+    const ghLinks = { RAGBot: "https://ragbot.shahjan.online", CineMatch: "https://github.com/Shahjan00/CineMatch", TableFlow: "https://github.com/Shahjan00/TableFlow.git" };
+
+    function Project(p) {
+      return h("article", { className: "card rv tilt" },
+        h("div", { className: "meta" }, p.d),
+        h("h3", null, p.n),
+        h("div", null, p.s),
+        h("div", { className: "tech" }, p.t.map(x => h("span", { key: x }, x))),
+        h("ul", null, p.p.map((x, i) => h("li", { key: i }, x))),
+        h("a", { className: "pill", href: ghLinks[p.n], target: "_blank", rel: "noreferrer" }, p.l + " ↗"));
+    }
+
+    function App() {
+      const L = skills.map(s => s[0]).concat(["RAG", "LLMs", "FastAPI", "Docker"]);
+      return h(React.Fragment, null,
+        h("nav", null,
+          h("a", { className: "logo", href: "#top" }, "SA//"),
+          h("div", { className: "links" },
+            [["About", "#about"], ["Work", "#work"], ["Stack", "#stack"], ["Education", "#edu"]].map(x => h("a", { key: x[0], className: "pill", href: x[1] }, x[0])),
+            h("a", { className: "pill solid", href: "#contact" }, "Hire me"))),
+        h("header", { className: "hero", id: "top", "data-bot": "hero" },
+          h("div", { className: "wrap", style: { width: "100%" } },
+            h("small", null, "Backend and AI/ML engineer. I build RAG systems, LLM apps and APIs that ship."),
+            h("h1", { className: "big l1", id: "l1" }, "Shahjan"),
+            h("h1", { className: "big l2", id: "l2" }, "Ali"),
+            h("div", { className: "tags" }, ["AI-first systems", "RAG pipelines", "Backend APIs"].map(x => h("span", { key: x, className: "pill" }, x))))),
+        h("div", { className: "marq" }, h("div", null, [...L, ...L].map((x, i) => h("span", { key: i }, x + " /")))),
+        h("section", { id: "about", "data-bot": "about" }, h("div", { className: "wrap" },
+          h("h2", { className: "big rv" }, "About"),
+          h("p", { className: "lead rv" }, "Backend and AI/ML-focused Software Engineer with hands-on experience building REST APIs, RAG systems, LLM-powered applications, and ML pipelines using Python, Django, FastAPI, Scikit-learn, and OpenAI. Skilled in backend development, NLP, embeddings, semantic search, vector databases, PostgreSQL, Docker, and asynchronous processing; seeking roles in Backend Engineering or AI Engineering."),
+          h("div", { className: "stats", style: { marginTop: 60 } },
+            [["150+", "LeetCode problems solved"], ["45K+", "movies in CineMatch"], ["101.5h", "DS, ML, DL & NLP bootcamp"]].map(s => h("div", { key: s[0], className: "rv" }, h("div", { className: "big" }, s[0]), h("div", { className: "meta" }, s[1])))))),
+        h("section", { id: "work", "data-bot": "work" }, h("div", { className: "wrap" },
+          h("h2", { className: "big rv" }, "Projects"),
+          h("div", { className: "grid" }, projects.map(p => h(Project, Object.assign({ key: p.n }, p)))))),
+        h("section", { id: "stack", "data-bot": "stack" }, h("div", { className: "wrap" },
+          h("h2", { className: "big rv" }, "Technical Skills"),
+          skills.map(s => h("div", { key: s[0], className: "skill rv" }, h("b", null, s[0]), h("span", null, s[1]))))),
+        h("section", { id: "edu", "data-bot": "edu" }, h("div", { className: "wrap" },
+          h("h2", { className: "big rv" }, "Education"),
+          h("div", { className: "grid" },
+            h("div", { className: "card rv tilt" }, h("div", { className: "meta" }, "2023 – 2027 (Expected)"), h("h3", null, "Parul University"), h("div", null, "B.Tech in Computer Science and Engineering"), h("div", null, "CGPA: 7.65/10 · Vadodara, Gujarat")),
+            h("div", { className: "card rv tilt" }, h("div", { className: "meta" }, "2022 – 2023"), h("h3", null, "YMS Sr Sec Public School"), h("div", null, "Higher Secondary (Class XII), CBSE"), h("div", null, "Dhanaura, UP")),
+            h("div", { className: "card rv tilt" }, h("div", { className: "meta" }, "Aug 2026"), h("h3", null, "KRISHAI Technologies"), h("div", null, "Data Science, Machine Learning, DL & NLP Bootcamp"), h("div", null, "101.5-hour bootcamp covering Data Science, Machine Learning, Deep Learning, and Natural Language Processing.")),
+            h("div", { className: "card rv tilt" }, h("div", { className: "meta" }, "Sep 2025"), h("h3", null, "IBM SkillsBuild"), h("div", null, "AI Fundamentals"), h("div", null, "Covered fundamentals of machine learning, deep learning, NLP, computer vision, and AI workflows using IBM Watson Studio."))),
+          h("p", { className: "lead rv", style: { marginTop: 50 } }, "Self-taught through official documentation; all projects built and deployed independently."))),
+        h("section", { id: "contact", "data-bot": "contact" }, h("div", { className: "wrap" },
+          h("h2", { className: "big rv" }, "Let's build"),
+          h("a", { className: "cta rv", href: "mailto:Shahjanali0022@gmail.com" }, "Shahjanali0022@gmail.com"),
+          h("div", { className: "tags rv" },
+            h("a", { className: "pill", href: "tel:+919897988742" }, "+91-9897988742"),
+            h("a", { className: "pill", href: "https://linkedin.com/in/shahjan-alii", target: "_blank", rel: "noreferrer" }, "LinkedIn ↗"),
+            h("a", { className: "pill", href: "https://github.com/Shahjan00", target: "_blank", rel: "noreferrer" }, "GitHub ↗")))),
+        h("footer", null, h("div", { className: "meta" }, "Shahjan Ali · Vadodara, Gujarat")));
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(h(App));
+
+    // ---- interactions ----
+    window.addEventListener("load", () => setTimeout(init, 50));
+    function init() {
+      const bot = document.getElementById("bot"), eyes = document.getElementById("eyes"), bub = document.getElementById("bub"),
+        cur = document.getElementById("cur"), bar = document.getElementById("bar"), sh = document.getElementById("sh");
+      const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target) } }), { threshold: .12 });
+      document.querySelectorAll(".rv").forEach(el => io.observe(el));
+
+      let W = innerWidth, H = innerHeight, mx = W * .75, my = H * .6, cx = mx, cy = my, bx = W * .8, by = H * .6, last = "";
+      addEventListener("resize", () => { W = innerWidth; H = innerHeight });
+      addEventListener("mousemove", e => {
+        mx = e.clientX; my = e.clientY;
+        cur.style.transform = `translate(${mx - cur.offsetWidth / 2}px,${my - cur.offsetHeight / 2}px)`;
+        cur.classList.toggle("big2", !!e.target.closest("a,.card,button"));
+      });
+      addEventListener("touchmove", e => { mx = e.touches[0].clientX; my = e.touches[0].clientY }, { passive: true });
+
+      const l1 = document.getElementById("l1"), l2 = document.getElementById("l2"), secs = [...document.querySelectorAll("[data-bot]")];
+      function tick(t) {
+        const sy = scrollY, max = Math.max(1, document.documentElement.scrollHeight - H), p = sy / max;
+        bar.style.width = (p * 100) + "%";
+        if (sy < H * 1.2) { l1.style.transform = `translateX(${-sy * .35}px)`; l2.style.transform = `translateX(${sy * .5}px)` }
+        // bot flight path: sweeps left/right with scroll, pulled toward the cursor
+        let tx = W * (.5 + .38 * Math.sin(p * 14)) * .65 + mx * .35 + 70;
+        let ty = H * (.62 + .12 * Math.cos(p * 10)) * .7 + my * .3 + 30;
+        tx = Math.min(W - 70, Math.max(60, tx)); ty = Math.min(H - 70, Math.max(150, ty));
+        const dx = tx - bx; bx += dx * .06; by += (ty - by) * .06;
+        const tilt = Math.max(-18, Math.min(18, dx * .08)), bob = Math.sin(t / 380) * 8;
+        bot.style.transform = `translate(${bx - 55}px,${by - 65 + bob}px) rotate(${tilt}deg)`;
+        sh.setAttribute("opacity", (.25 - bob * .008).toFixed(2));
+        const ex = Math.max(-7, Math.min(7, (mx - bx) / 40)), ey = Math.max(-5, Math.min(5, (my - by) / 50)), blink = (t % 4200) < 130 ? .1 : 1;
+        eyes.style.transform = `translate(${ex}px,${ey}px) scaleY(${blink})`;
+        const hit = secs.find(s => { const r = s.getBoundingClientRect(); return r.top < H * .5 && r.bottom > H * .5 });
+        const key = hit ? hit.dataset.bot : "hero";
+        if (key !== last) { last = key; bub.style.opacity = 0; setTimeout(() => { bub.textContent = BOT[key]; bub.style.opacity = 1 }, 200) }
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+
+      // 3D tilt on cards
+      document.addEventListener("mousemove", e => {
+        const c = e.target.closest && e.target.closest(".tilt");
+        document.querySelectorAll(".tilt").forEach(el => { if (el !== c) { el.style.setProperty("--rx", "0deg"); el.style.setProperty("--ry", "0deg") } });
+        if (c) {
+          const r = c.getBoundingClientRect();
+          c.style.setProperty("--ry", ((e.clientX - r.left) / r.width - .5) * 10 + "deg");
+          c.style.setProperty("--rx", -((e.clientY - r.top) / r.height - .5) * 10 + "deg")
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
