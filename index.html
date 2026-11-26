@@ -451,7 +451,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
   <script>
     const h = React.createElement;
-    const BOT = { hero: "hey, I'm Shahjan's bot", about: "he builds RAG systems", work: "live on AWS. try it", stack: "python, django, faiss", edu: "CGPA 7.65", resume: "grab his resume", contact: "say hi to him" };
+    const BOT = { hero: "hey, I'm Shahjan's bot", about: "he builds agentic AI", work: "live on AWS. try it", stack: "python, langgraph, faiss", edu: "CGPA 7.65", resume: "grab his resume", contact: "say hi to him" };
 
     const projects = [
       {
@@ -486,10 +486,10 @@
     const skills = [
       ["Languages", "Python, JavaScript (Node.js), TypeScript, SQL, C"],
       ["Backend & APIs", "Django, DRF, Flask, FastAPI, Express.js, REST APIs, JWT Auth"],
-      ["AI / ML", "RAG, LangChain, LangGraph, Agentic AI, Voice AI, Embeddings, Semantic Search, NLP, Scikit-learn, Classification, Regression"],
+      ["AI / ML", "RAG, LangChain, LangGraph, Agentic AI, Voice AI, Embeddings, Semantic Search, NLP, Scikit-learn, Gemini, Classification, Regression"],
       ["Vector Search", "FAISS, ChromaDB, Cosine Similarity"],
       ["Databases", "PostgreSQL, MySQL, MongoDB"],
-      ["Tools", "Git, AWS, Docker, Postman, Jupyter Notebook, Linux, HuggingFace, Celery, Redis, Jest"],
+      ["Tools", "Git, AWS, Docker, Postman, Jupyter Notebook, Linux, HuggingFace, Celery, Redis, Jest, LangSmith, Playwright"],
       ["CS Fundamentals", "Data Structures & Algorithms, Operating Systems, DBMS, OOP, Computer Networks, System Design"]
     ];
     const ghLinks = { Zuno: "https://github.com/Shahjan00/Zuno-studio", RAGBot: "https://ragbot.shahjan.online", CineMatch: "https://github.com/Shahjan00/CineMatch", VerifyCOD: "https://github.com/Shahjan00/VerifyCOD", TableFlow: "https://github.com/Shahjan00/TableFlow.git" };
@@ -514,16 +514,16 @@
             h("a", { className: "pill solid", href: "#contact" }, "Hire me"))),
         h("header", { className: "hero", id: "top", "data-bot": "hero" },
           h("div", { className: "wrap", style: { width: "100%" } },
-            h("small", null, "Backend and AI/ML engineer. I build RAG systems, LLM apps and APIs that ship."),
+            h("small", null, "Backend and AI engineer. I build agentic AI, RAG systems and voice AI that ship."),
             h("h1", { className: "big l1", id: "l1" }, "Shahjan"),
             h("h1", { className: "big l2", id: "l2" }, "Ali"),
-            h("div", { className: "tags" }, ["AI-first systems", "RAG pipelines", "Backend APIs"].map(x => h("span", { key: x, className: "pill" }, x))))),
+            h("div", { className: "tags" }, ["Agentic AI", "RAG pipelines", "Voice AI", "Backend APIs"].map(x => h("span", { key: x, className: "pill" }, x))))),
         h("div", { className: "marq" }, h("div", null, [...L, ...L].map((x, i) => h("span", { key: i }, x + " /")))),
         h("section", { id: "about", "data-bot": "about" }, h("div", { className: "wrap" },
           h("h2", { className: "big rv" }, "About"),
-          h("p", { className: "lead rv" }, "Backend and AI/ML-focused Software Engineer with hands-on experience building REST APIs, RAG systems, LLM-powered applications, and ML pipelines using Python, Django, FastAPI, LangGraph, Scikit-learn, and OpenAI. Skilled in backend development, NLP, embeddings, semantic search, vector databases, PostgreSQL, Docker, and asynchronous processing; seeking roles in Backend Engineering or AI Engineering."),
+          h("p", { className: "lead rv" }, "Backend and AI engineer building agentic AI systems, RAG products, LLM apps and voice AI with Python, LangGraph, LangChain, FastAPI and Django. Right now I'm a Backend Developer Intern at Accesco, building the delivery partner APIs, and an Automation and Data Engineering Fellow at FairwAI. My main work is Zuno, a LangGraph website builder, RAGBot, a multi-tenant RAG platform, and VerifyCOD, a voice AI that confirms COD orders in Hinglish. I'm looking for a full-time AI or backend role."),
           h("div", { className: "stats", style: { marginTop: 60 } },
-            [["150+", "LeetCode problems solved"], ["45K+", "movies in CineMatch"], ["101.5h", "DS, ML, DL & NLP bootcamp"]].map(s => h("div", { key: s[0], className: "rv" }, h("div", { className: "big" }, s[0]), h("div", { className: "meta" }, s[1])))))),
+            [["150+", "LeetCode problems solved"], ["45K+", "movies in CineMatch"], ["2", "internships live now, Accesco + FairwAI"]].map(s => h("div", { key: s[0], className: "rv" }, h("div", { className: "big" }, s[0]), h("div", { className: "meta" }, s[1])))))),
         h("section", { id: "work", "data-bot": "work" }, h("div", { className: "wrap" },
           h("h2", { className: "big rv" }, "Projects"),
           h("div", { className: "grid" }, projects.map(p => h(Project, Object.assign({ key: p.n }, p)))))),
