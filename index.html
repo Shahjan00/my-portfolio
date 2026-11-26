@@ -451,7 +451,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
   <script>
     const h = React.createElement;
-    const BOT = { hero: "hey, I'm Shahjan's bot", about: "he builds RAG systems", work: "live on AWS. try it", stack: "python, django, faiss", edu: "CGPA 7.65", contact: "say hi to him" };
+    const BOT = { hero: "hey, I'm Shahjan's bot", about: "he builds RAG systems", work: "live on AWS. try it", stack: "python, django, faiss", edu: "CGPA 7.65", resume: "grab his resume", contact: "say hi to him" };
 
     const projects = [
       {
@@ -510,7 +510,7 @@
         h("nav", null,
           h("a", { className: "logo", href: "#top" }, "SA//"),
           h("div", { className: "links" },
-            [["About", "#about"], ["Work", "#work"], ["Stack", "#stack"], ["Education", "#edu"]].map(x => h("a", { key: x[0], className: "pill", href: x[1] }, x[0])),
+            [["About", "#about"], ["Work", "#work"], ["Stack", "#stack"], ["Education", "#edu"], ["Resume", "#resume"]].map(x => h("a", { key: x[0], className: "pill", href: x[1] }, x[0])),
             h("a", { className: "pill solid", href: "#contact" }, "Hire me"))),
         h("header", { className: "hero", id: "top", "data-bot": "hero" },
           h("div", { className: "wrap", style: { width: "100%" } },
@@ -538,6 +538,12 @@
             h("div", { className: "card rv tilt" }, h("div", { className: "meta" }, "Aug 2026"), h("h3", null, "KRISHAI Technologies"), h("div", null, "Data Science, Machine Learning, DL & NLP Bootcamp"), h("div", null, "101.5-hour bootcamp covering Data Science, Machine Learning, Deep Learning, and Natural Language Processing.")),
             h("div", { className: "card rv tilt" }, h("div", { className: "meta" }, "Sep 2025"), h("h3", null, "IBM SkillsBuild"), h("div", null, "AI Fundamentals"), h("div", null, "Covered fundamentals of machine learning, deep learning, NLP, computer vision, and AI workflows using IBM Watson Studio."))),
           h("p", { className: "lead rv", style: { marginTop: 50 } }, "Self-taught through official documentation; all projects built and deployed independently."))),
+        h("section", { id: "resume", "data-bot": "resume" }, h("div", { className: "wrap" },
+          h("h2", { className: "big rv" }, "Resume"),
+          h("p", { className: "lead rv" }, "One page. GenAI and Python backend focused. Zuno, RAGBot, CineMatch and VerifyCOD."),
+          h("div", { className: "tags rv" },
+            h("a", { className: "pill solid", href: "Shahjan_Ali_Resume.pdf", target: "_blank", rel: "noreferrer" }, "View resume ↗"),
+            h("a", { className: "pill", href: "Shahjan_Ali_Resume.pdf", download: "Shahjan_Ali_Resume.pdf" }, "Download PDF")))),
         h("section", { id: "contact", "data-bot": "contact" }, h("div", { className: "wrap" },
           h("h2", { className: "big rv" }, "Let's build"),
           h("a", { className: "cta rv", href: "mailto:Shahjanali0022@gmail.com" }, "Shahjanali0022@gmail.com"),
