@@ -455,6 +455,12 @@
 
     const projects = [
       {
+        n: "Zuno", s: "Agentic AI Website Builder", d: "Oct 2026 - Present", t: ["LangGraph", "FastAPI", "React", "SQLite", "LangSmith"],
+        p: ["Built an agentic AI website builder that turns a plain-language prompt into a working website through a multi-agent LangGraph pipeline.",
+          "FastAPI backend with SQLite-backed conversational memory, so it remembers past builds and iterates on them.",
+          "Playwright-driven preview and verification of generated sites; containerized with Docker."], l: "GitHub"
+      },
+      {
         n: "RAGBot", s: "B2B SaaS RAG Platform", d: "Jan - Apr 2026", t: ["Django", "DRF", "LangChain", "FAISS", "OpenAI", "AWS"],
         p: ["Architected a multi-tenant B2B SaaS platform for PDF-based chat with an embeddable JS widget using Django, DRF, PostgreSQL, Celery, and Redis.",
           "Engineered a LangChain RAG pipeline using FAISS, cosine similarity, and SentenceTransformers embeddings; served contextual answers via GPT-4o-mini with source attribution.",
@@ -467,6 +473,11 @@
           "Implemented a 4-stage NLP pipeline (lowercasing, regex cleaning, stop-word removal, lemmatization) and TF-IDF vectorization (unigrams + bigrams, 50,000 features) generating a sparse matrix with 1.7M+ non-zero entries; used cosine similarity for scalable item-to-item recommendations and serialized trained artifacts for reuse."], l: "GitHub"
       },
       {
+        n: "VerifyCOD", s: "Voice AI for COD Order Confirmation", d: "Nov 2026", t: ["FastAPI", "Groq", "Gnani", "Voice AI"],
+        p: ["Built a voice AI that calls cash-on-delivery buyers and confirms the order and address in Hinglish before the seller ships, so fewer orders come back.",
+          "Gnani Prisma STT and Timbre TTS for speech, Groq for intent detection, FastAPI backend with a demo store."], l: "GitHub"
+      },
+      {
         n: "TableFlow", s: "QR-Based Restaurant Ordering System", d: "Aug - Sep 2025", t: ["Django", "DRF", "PostgreSQL", "JWT"],
         p: ["Built a QR-based restaurant ordering backend with menu browsing and order lifecycle management: pending → preparing → served.",
           "Implemented JWT authentication, role-based access control, and Docker-based deployment for admin and customer roles."], l: "GitHub"
@@ -475,13 +486,13 @@
     const skills = [
       ["Languages", "Python, JavaScript (Node.js), TypeScript, SQL, C"],
       ["Backend & APIs", "Django, DRF, Flask, FastAPI, Express.js, REST APIs, JWT Auth"],
-      ["AI / ML", "RAG, LangChain, Embeddings, Semantic Search, NLP, Scikit-learn, Classification, Regression"],
+      ["AI / ML", "RAG, LangChain, LangGraph, Agentic AI, Voice AI, Embeddings, Semantic Search, NLP, Scikit-learn, Classification, Regression"],
       ["Vector Search", "FAISS, ChromaDB, Cosine Similarity"],
       ["Databases", "PostgreSQL, MySQL, MongoDB"],
-      ["Tools", "Git, AWS, Docker, Postman, Jupyter Notebook, Linux, HuggingFace, Celery, Redis"],
+      ["Tools", "Git, AWS, Docker, Postman, Jupyter Notebook, Linux, HuggingFace, Celery, Redis, Jest"],
       ["CS Fundamentals", "Data Structures & Algorithms, Operating Systems, DBMS, OOP, Computer Networks, System Design"]
     ];
-    const ghLinks = { RAGBot: "https://ragbot.shahjan.online", CineMatch: "https://github.com/Shahjan00/CineMatch", TableFlow: "https://github.com/Shahjan00/TableFlow.git" };
+    const ghLinks = { Zuno: "https://github.com/Shahjan00/Zuno-studio", RAGBot: "https://ragbot.shahjan.online", CineMatch: "https://github.com/Shahjan00/CineMatch", VerifyCOD: "https://github.com/Shahjan00/VerifyCOD", TableFlow: "https://github.com/Shahjan00/TableFlow.git" };
 
     function Project(p) {
       return h("article", { className: "card rv tilt" },
@@ -510,7 +521,7 @@
         h("div", { className: "marq" }, h("div", null, [...L, ...L].map((x, i) => h("span", { key: i }, x + " /")))),
         h("section", { id: "about", "data-bot": "about" }, h("div", { className: "wrap" },
           h("h2", { className: "big rv" }, "About"),
-          h("p", { className: "lead rv" }, "Backend and AI/ML-focused Software Engineer with hands-on experience building REST APIs, RAG systems, LLM-powered applications, and ML pipelines using Python, Django, FastAPI, Scikit-learn, and OpenAI. Skilled in backend development, NLP, embeddings, semantic search, vector databases, PostgreSQL, Docker, and asynchronous processing; seeking roles in Backend Engineering or AI Engineering."),
+          h("p", { className: "lead rv" }, "Backend and AI/ML-focused Software Engineer with hands-on experience building REST APIs, RAG systems, LLM-powered applications, and ML pipelines using Python, Django, FastAPI, LangGraph, Scikit-learn, and OpenAI. Skilled in backend development, NLP, embeddings, semantic search, vector databases, PostgreSQL, Docker, and asynchronous processing; seeking roles in Backend Engineering or AI Engineering."),
           h("div", { className: "stats", style: { marginTop: 60 } },
             [["150+", "LeetCode problems solved"], ["45K+", "movies in CineMatch"], ["101.5h", "DS, ML, DL & NLP bootcamp"]].map(s => h("div", { key: s[0], className: "rv" }, h("div", { className: "big" }, s[0]), h("div", { className: "meta" }, s[1])))))),
         h("section", { id: "work", "data-bot": "work" }, h("div", { className: "wrap" },
